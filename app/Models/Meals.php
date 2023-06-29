@@ -10,31 +10,34 @@ use App\Models\Ingredients;
 use App\Models\Tags;
 use App\Models\Languages;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Meals extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'status'];
-    //Create relationship HasOne or Belongs To
-    public function category(): BelongsTo
+    protected $fillable = ['title', 'description', 'status', 'category_id', 'tags_id', 'ingredients_id'];
+    protected $hidden = ['created_at', 'updated_at', 'delete_at', 'category_id', 'tags_id', 'ingredients_id'];
+
+    // Create relationship belongs to Category
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    //Create relationships has many tags, ingredients and languages
-    public function tags(): HasMany
+    // Create relationships hasMany Tags, Ingredients, and Languages
+    public function tags()
     {
-        return $this->hasMany(Tags::class);
+        return $this->belongsTo(Tags::class);
     }
 
-    public function ingredients(): HasMany
+    public function ingredients()
     {
-        return $this->hasMany(Ingredients::class);
+        return $this->belongsTo(Ingredients::class);
     }
 
-    public function languages(): HasMany
+    public function languages()
     {
-        return $this->hasMany(Languages::class);
+        return $this->belongsTo(Languages::class);
     }
 }

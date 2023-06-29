@@ -16,15 +16,15 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('status');
-            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('tags_id');
             $table->unsignedBigInteger('ingredients_id');
             $table->timestamps();
             $table->softDeletes('delete_at');
 
-            $table->foreign('category_id')->references('id')->on('category');
-            $table->foreign('tags_id')->references('id')->on('tags');
-            $table->foreign('ingredients_id')->references('id')->on('ingredients');
+            $table->foreign('category_id')->references('id')->on('category')->nullable()->onDelete('cascade');
+            $table->foreign('tags_id')->references('id')->on('tags')->onDelete('cascade');
+            $table->foreign('ingredients_id')->references('id')->on('ingredients')->onDelete('cascade');
 
         });
     }

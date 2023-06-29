@@ -1,13 +1,13 @@
 <?php
 
-use App\Models\Category;
-use App\Models\Meals;
-use App\Models\Tags;
-use App\Models\Ingredients;
-use Database\Factories\CategoryFactory;
-use Database\Factories\MealsFactory;
-use Database\Factories\TagsFactory;
+namespace Database\Seeders;
+
+
 use Illuminate\Database\Seeder;
+use Database\Seeders\MealsSeeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            MealsSeeder::class,
+        ]);
        
     }
 }
