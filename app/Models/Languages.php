@@ -14,7 +14,7 @@ class Languages extends Model
 {
     use HasFactory;
     
-    protected $table = ['languages'];
+    protected $table = 'languages';
 
     public function meals() : HasMany
     {

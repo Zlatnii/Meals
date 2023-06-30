@@ -16,11 +16,11 @@ class Meals extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'status', 'category_id', 'tags_id', 'ingredients_id'];
+    protected $fillable = ['title', 'description', 'status'];
     protected $hidden = ['created_at', 'updated_at', 'delete_at', 'category_id', 'tags_id', 'ingredients_id'];
 
     // Create relationship belongs to Category
-    public function category()
+    public function category() : BelongsTo
     {
         return $this->belongsTo(Category::class);
     }

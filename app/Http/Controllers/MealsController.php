@@ -12,8 +12,8 @@ class MealsController extends Controller
     public function index() 
     {
 
-        $meals = Meals::with(['tags', 'ingredients', 'category'])->get();
-
-        return response()->json(['meals' => $meals]);
+        $meals = Meals::with('category', 'tags','ingredients')->get();
+        return $meals;
+       
     }
 }

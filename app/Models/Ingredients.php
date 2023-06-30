@@ -12,10 +12,12 @@ class Ingredients extends Model
 {
     use HasFactory;
 
-    protected $table = ['ingredients'];
+    protected $table = 'ingredients';
     protected $fillable = ['title', 'slug'];
+    protected $hidden = ['created_at', 'updated_at', 'delete_at', 'category_id', 'tags_id', 'ingredients_id'];
+
     
-    public function meals()
+    public function meals() : HasMany
     {
         return $this->hasMany(Meals::class);
     }

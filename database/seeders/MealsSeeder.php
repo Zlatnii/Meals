@@ -2,14 +2,20 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
+use App\Models\Ingredients;
+use App\Models\Meals;
+use App\Models\Tags;
+use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
+
+
 
 class MealsSeeder extends Seeder
 {
+    use HasFactory;
     /**
      * Run the database seeds.
      */
@@ -17,30 +23,37 @@ class MealsSeeder extends Seeder
     {
          // Seed categories
         DB::table('category')->insert([
-            'title' => 'naslov jela na HR jeziku',
-            'slug' => 'naslov-jela-na-HR-jeziku',
+            'title' =>  fake()->sentence(),
+            'slug' => fake()->slug(),
         ]);
 
         // Seed tags
         DB::table('tags')->insert([
-            'title' => 'naslov jela na HR jeziku',
-            'slug' => 'naslov-jela-na-HR-jeziku',
+            'title' => fake()->sentence(),
+            'slug' => fake()->slug(),
         ]);
 
         // Seed ingredients
         DB::table('ingredients')->insert([
-            'title' => 'naslov jela na HR jeziku',
-            'slug' => 'naslov-jela-na-HR-jeziku',
+            'title' => fake()->sentence(),
+            'slug' => fake()->slug(),
         ]);
 
         //Seed meals
+        $categoryIds = Category::pluck('id')->toArray();
+        $tagIds = Tags::pluck('id')->toArray();
+        $ingredientIds = Ingredients::pluck('id')->toArray();
+
+        $statusOptions = ['created', 'modified', 'deleted'];
+        $status = $statusOptions[array_rand($statusOptions)];
+
         DB::table('meals')->insert([
-            'title' => 'naslov jela na HR jeziku',
-            'description' => 'opis jela na HR jeziku',
-            'status' => ('deleted' ? 'created' : 'modified'),
-            'category_id' => 1, // Random category ID
-            'tags_id' => 1, // Random tag ID
-            'ingredients_id' => 1, // Random ingredient ID
+            'title' => fake()->sentence(),
+            'description' => fake()->text(),
+            'status' => $status,
+            'category_id' => $categoryIds[array_rand($categoryIds)],
+            'tags_id' => $tagIds[array_rand($tagIds)],
+            'ingredients_id' => $ingredientIds[array_rand($ingredientIds)],
         ]);
     }
 }
