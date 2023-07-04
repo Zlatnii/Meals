@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\MealsController;
+use App\Models\Meals;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MealsController::class, 'index'] );
+
+Route::get('/', [MealsController::class, 'view']);
+
+Route::get('/meals/all', [MealsController::class, 'index'] );
+
+Route::get('/meals', [MealsController::class, 'meals']);
+Route::get('/category', [MealsController::class, 'category']);
+Route::get('/tags', [MealsController::class, 'tags']);
+Route::get('/ingredients', [MealsController::class, 'ingredients']);
+
