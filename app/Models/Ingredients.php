@@ -21,4 +21,9 @@ class Ingredients extends Model
     {
         return $this->hasMany(Meals::class);
     }
+
+    public function translation() : HasMany
+    {
+        return $this->hasMany(Meals::class);
+    }
 }

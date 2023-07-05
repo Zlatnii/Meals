@@ -9,12 +9,14 @@ use App\Models\Meals;
 use App\Models\Category;
 use App\Models\Tags;
 use App\Models\Ingredients;
+use App\Models\Translation;
 
 class Languages extends Model
 {
     use HasFactory;
     
     protected $table = 'languages';
+    protected $fillable = ['lang'];
 
     public function meals() : HasMany
     {
@@ -34,6 +36,11 @@ class Languages extends Model
     public function ingredients() : HasMany
     {
         return $this->hasMany(Ingredients::class);
+    }
+
+    public function translation() : HasMany
+    {
+        return $this->hasMany(Translation::class);
     }
 
 }

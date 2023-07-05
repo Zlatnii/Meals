@@ -40,4 +40,9 @@ class Meals extends Model
     {
         return $this->belongsTo(Languages::class);
     }
+
+    public function translation() : HasMany
+    {
+        return $this->hasMany(Meals::class);
+    }
 }

@@ -111,6 +111,22 @@ return [
 
     'faker_locale' => 'en_US',
 
+        /*
+    |--------------------------------------------------------------------------
+    | Available locales
+    |--------------------------------------------------------------------------
+    |
+    | List all locales that your application works with
+    |
+    */
+
+    'available_locales' => [
+        'English' => 'en',
+        'Russian' => 'ru',
+        'French' => 'fr',
+        'Croatian' => 'hr',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -121,6 +137,7 @@ return [
     | will not be safe. Please do this before deploying an application!
     |
     */
+
 
     'key' => env('APP_KEY'),
 

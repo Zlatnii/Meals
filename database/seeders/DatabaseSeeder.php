@@ -21,7 +21,12 @@ class DatabaseSeeder extends Seeder
         for ($i = 1; $i <= 10; $i++) {
             $this->call(MealsSeeder::class);
         }
-       
+
+        for ($i = 1; $i <= 2; $i++) {
+            $this->call(LanguageAndTranslations::class);
+        }
+
+
     }
 }
 

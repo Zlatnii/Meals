@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Meals;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Category extends Model
@@ -19,5 +20,10 @@ class Category extends Model
     public function meals() : HasOne
     {
         return $this->hasOne(Meals::class);
+    }
+
+    public function translation() : HasMany
+    {
+        return $this->hasMany(Meals::class);
     }
 }

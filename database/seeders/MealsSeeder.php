@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Ingredients;
+use App\Models\Languages;
 use App\Models\Meals;
 use App\Models\Tags;
 use Faker\Generator as Faker;
