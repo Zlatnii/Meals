@@ -17,6 +17,8 @@ class Languages extends Model
     
     protected $table = 'languages';
     protected $fillable = ['lang'];
+    protected $hidden = ['created_at', 'updated_at', 'delete_at', 'category_id', 'tags_id', 'ingredients_id'];
+
 
     public function meals() : HasMany
     {

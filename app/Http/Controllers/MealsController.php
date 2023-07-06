@@ -5,7 +5,9 @@ use Illuminate\Http\Request;
 use App\Models\Meals;
 use App\Models\Category;
 use App\Models\Ingredients;
+use App\Models\Languages;
 use App\Models\Tags;
+use App\Models\Translation;
 use Illuminate\Support\Facades\Response;
 
 
@@ -30,25 +32,39 @@ class MealsController extends Controller
     //Return by parameters
     public function meals()
     {
-        $var = Meals::all();
-        return $var;
+        $meals = Meals::all();
+        return $meals;
     }
 
     public function category()
     {
-        $var = Category::all();
-        return $var;
+        $category = Category::all();
+        return $category;
     }
 
     public function tags()
     {
-        $var = Tags::all();
-        return $var;
+        $tags = Tags::all();
+        return $tags;
     }
 
     public function ingredients()
     {
-        $var = Ingredients::all();
-        return $var;
+        $ingredients = Ingredients::all();
+        return $ingredients;
+    }
+
+    public function translation()
+    {
+        $translation = Translation::with('meals', 'category','ingredients')->get();
+
+        return response()->json($translation);
+    }
+
+    public function languages()
+    {
+        $languages = Languages::all();
+
+        return response()->json($languages); 
     }
 }

@@ -19,7 +19,7 @@ class Translation extends Model
     
     protected $table = 'translation';
     protected $fillable = ['title_hr', 'title_en'];
-
+    protected $hidden = ['language_id', 'meals_id','created_at', 'updated_at', 'delete_at', 'category_id', 'tags_id', 'ingredients_id'];
 
     public function meals() : BelongsTo
     {

@@ -22,16 +22,20 @@
         } else {
             App::setLocale(config('app.locale'));
         }
-        
+
         $mealsController = new MealsController();
         $meals = $mealsController->index();
         
         return view('welcome', compact('meals'));
     })->where('lang', '(en|hr)');
 
-    Route::get('/meals/all/{lang?}', [MealsController::class, 'index'] );
-    Route::get('/meals/{lang?}', [MealsController::class, 'meals']);
-    Route::get('/category/{lang?}', [MealsController::class, 'category']);
-    Route::get('/tags/{lang?}', [MealsController::class, 'tags']);
-    Route::get('/ingredients/{lang?}', [MealsController::class, 'ingredients']);
+    Route::get('/meals/all', [MealsController::class, 'index'] );
+    Route::get('/meals', [MealsController::class, 'meals']);
+    Route::get('/category', [MealsController::class, 'category']);
+    Route::get('/tags', [MealsController::class, 'tags']);
+    Route::get('/ingredients', [MealsController::class, 'ingredients']);
+    Route::get('/translation', [MealsController::class, 'translation']);
+    Route::get('/languages', [MealsController::class, 'languages']);
+
+
 
